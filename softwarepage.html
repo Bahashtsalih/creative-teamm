@@ -1,0 +1,166 @@
+<html lang="en">
+<head>
+  <title>softwarepage</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script> 
+  <script src="https://use.fontawesome.com/3a2eaf6206.js"></script>
+  <style> 
+     #d{
+        text-align:center;
+        padding:2%;
+        border:thin solid #177063; 
+        background-color: #fff;
+      }
+
+      input[type=file]{
+        display: none;
+      }
+      label{
+        cursor:pointer;
+      }
+      #imageName{
+        color:green;
+      }
+    h1 
+    {
+      text-align: center;color: #177063;
+      margin-top: 20px; 
+      text-transform: capitalize;
+
+    }  
+   #b2  ,#b1,.btn
+    {
+      margin-left: 10px; 
+      margin-top: 30px;  
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: #177063;
+      color: #fff;
+      font-size: 20px; 
+      text-decoration: none;
+      font-weight: 500;
+      text-transform: capitalize;
+    }#b2 a ,#b1 a
+    {
+      color: #fff; 
+      background-color: transparent;
+      font-size: 20px; 
+      text-decoration: none;
+      font-weight: 500;
+      text-transform: capitalize;
+    }
+     #b1,#b2
+    {
+border: 1px solid #fff;
+text-transform: capitalize;
+    }
+    #b2:hover,#b1:hover,.btn:hover
+    { 
+      color: #fff;
+ transform: scale(1.02); 
+ box-shadow: 0 0 10px 6px #ccc;
+    }
+
+    textarea ,input[type=text] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #177063;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+
+}
+input[type=submit] {
+  background-color: #177063;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #217669; 
+  box-shadow: 0px 0px 12px #2f9989; 
+
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  /* padding: 20px 20px 5px 20px ;  */
+  text-transform: capitalize;
+} 
+h3
+{
+  text-align: center; 
+  margin-top: 50px; 
+  margin-bottom: 20px; 
+  color:#177063;
+  text-transform: capitalize;
+}
+  </style>
+</head>
+<body>
+
+<div class="container-fluid">
+  <h1>Welcome to admin page</h1>
+  <div class="container-fluid">
+    <div class="d-flex justify-content-center"> 
+      <select name="forma"class="btn" onchange="location = this.value;"> 
+        <option value="graphicpage.html">Add Graphics products</option> 
+        <option value="softwarepage.html" selected>Add software products</option> 
+       </select> 
+      <button class="btn"
+      type="submit">
+   logout
+</button></div> </div>
+<h3> software product Form</h3>
+  </div>
+
+
+
+  <div class="container">
+    <form action="">  
+      <div class="form-group">
+        <label for="subject">Subject</label>
+        <input type="text" name="subject" id="subject" required>
+      </div>
+        <p>select Image</p>
+        <div id="d">
+            <label for="inputTag">
+              Select Image <br/>
+              <i class="fa fa-2x fa-camera"></i>
+              <input id="inputTag" type="file"/>
+              <br/>
+              <span id="imageName"></span>
+            </label>
+          </div>
+  <br>
+      <label for="subject">description</label>
+      <textarea id="subject" name="subject" placeholder="Write something" style="height:200px"></textarea>
+  
+      <input type="submit" value="Add">
+    </form>
+  </div>
+</body> 
+<script>
+    let input = document.getElementById("inputTag");
+    let imageName = document.getElementById("imageName")
+
+    input.addEventListener("change", ()=>{
+        let inputImage = document.querySelector("input[type=file]").files[0];
+
+        imageName.innerText = inputImage.name;
+    })
+</script>
+</html>
+
+ 
+ 

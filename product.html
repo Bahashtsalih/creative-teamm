@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title> 
+    <?php require_once("admin/includes/init.php"); ?>
+  <!-- about bootstrap CSS Files -->
+  <link href="textct/aboutbootstrap/aos/aos.css" rel="stylesheet">
+  <link href="textct/aboutbootstrap/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="textct/aboutbootstrap/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="textct/aboutbootstrap/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="textct/aboutbootstrap/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="textct/aboutbootstrap/remixicon/remixicon.css" rel="stylesheet">
+  <link href="textct/aboutbootstrap/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="textct/aboutbootstrap/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="css/psoftwareandgraphic.css">
+</head>
+<body style="background-color: whitesmoke;">
+<!-- start details of product software-->
+
+
+
+<?php
+
+if(isset($_GET['delete'])){
+$post_id = $upload->get_by_id("`id` = $_GET[delete]");
+$file_name = "admin/includes/upload/$post_id->fileName";
+$deleted = $upload->delete("`id` = $_GET[delete]");
+if($deleted === true){
+  if(file_exists($file_name)){
+     unlink($file_name);
+     redirect("product.php");
+}
+}
+}
+
+
+// if(isset($_GET['edit'])){
+//        redirect("admin/post.php");
+//   }
+
+
+?>
+
+  <div class="container-fluid">
+    <div class="row">
+          <div class="detail">
+        <h1>creative team</h1>  
+        <div class="section-title">
+          <?php 
+         
+          if(isset($_GET['software'])){ ?>
+          <h2>Software products</h2>
+          <?php } 
+          if(isset($_GET['graphic'])){ ?>
+           <h2>Graphic products</h2>
+        <?php } ?>
+        </div>
+        <div class="l">
+<button  id="b2"><a href="../creative company/"> Back</a></button> &nbsp; &nbsp; &nbsp; &nbsp;
+<?php 
+
+if($check->get_logged_in()){
+  ?>
+<button  id="b2"><a href="Admin/post.php"> Post Page</a></button></div>
+<?php } ?>
+
+        </div>
+    </div>
+  </div> 
+<!-- end details of product software-->
+     <!-- =======  content  Section ======= -->
+     <?php 
+        $allpost = $upload::get_all();
+        foreach($allpost as $post){
+          if(($post->post_type == 1 && isset($_GET['software'])) || ($post->post_type == 1 && isset($_GET['software'])  && $check->get_logged_in())
+           || ($post->post_type == 2 && isset($_GET['graphic'])) || ($post->post_type == 2 && isset($_GET['graphic'])  && $check->get_logged_in()) ||
+           ($check->get_logged_in() && !isset($_GET['graphic']) && !isset($_GET['software']))){  ?>
+    <section>
+      <div class="container"  id="content" class="content">
+        <div class="row">
+          <div >
+          <div class="col-sm-6" >
+            <img src="admin/includes/upload/<?php echo $post->fileName; ?>">
+          </div> 
+          </div>
+          <div class="col-sm-6" data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon-box">
+              <h4> <?php echo $post->title; ?> </h4> 
+              <p> <?php echo $post->description; ?> </p>
+       
+              <?php if($check->get_logged_in()){ ?>
+               <button  id="b3"><a href="?delete=<?php echo $post->id; ?>"> delete</a></button>&nbsp;&nbsp;&nbsp;
+              <button  id="b4"><a href="Admin/post.php?edit=<?php echo $post->id; ?>"> edit</a></button>  <br>
+              <?php } ?>
+              <p>Date: <?php $piece = explode(" ",$post->post_date); echo $piece[0]; ?> </p>
+            </div>
+          </div>
+        </div>   
+      </div>
+      
+    </section>
+    <?php } } ?>
+
+
+
+
+
+
+<!-- End content Section -->
+  <!-- detailboot JS Files -->
+  <script src="textct/aboutbootstrap/aos/aos.js"></script>
+  <script src="textct/aboutbootstrap/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="textct/aboutbootstrap/glightbox/js/glightbox.min.js"></script>
+  <script src="textct/aboutbootstrap/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="textct/aboutbootstrap/php-email-form/validate.js"></script>
+  <script src="textct/aboutbootstrap/swiper/swiper-bundle.min.js"></script>
+  <script src="textct/aboutbootstrap/waypoints/noframework.waypoints.js"></script>
+  <!-- Template Main JS File -->
+  <script src="textct/js/main.js"></script>
+</body>
+</html>
+
+

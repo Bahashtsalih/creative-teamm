@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title> 
+    
+  <!-- about bootstrap CSS Files -->
+  <link href="aboutbootstrap/aos/aos.css" rel="stylesheet">
+  <link href="aboutbootstrap/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="aboutbootstrap/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="aboutbootstrap/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="aboutbootstrap/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="aboutbootstrap/remixicon/remixicon.css" rel="stylesheet">
+  <link href="aboutbootstrap/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="css/psoftwareandgraphic.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- start details of product software-->
+
+  <div class="container-fluid">
+    <div class="row">
+          <div class="detail">
+        <h1>creative team</h1>  
+        <div class="left">
+<button  id="b2"><a href="index.html"> Back</a></button> &nbsp; &nbsp; &nbsp; &nbsp;
+<button  id="b2"><a href="../post.php"> Post Page</a></button></div>
+
+        </div>
+      
+    </div>
+
+  </div> 
+ 
+<!-- end details of product software-->
+     <!-- ======= software Product  Section ======= -->
+     <section id="services" class="services section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>products software</h2>
+        </div>
+
+        <div class=" m-2 row justify-content-center">
+            <?php
+$allpost = Upload::get_all("SELECT * FROM `post`");
+foreach($allpost as $post){?>
+          <div class="col-xl-4 col-md-6 d-flex align-items-stretch text-center   " data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon-box">
+          <img src="../includes/upload/<?php echo $post->fileName; ?>" alt="" class="mx-auto d-block" >
+            
+              <p><?php echo $post->description; ?>
+              </p>
+  <br>
+  <button  id="b3"><a href="#"> delete</a></button>&nbsp;&nbsp;&nbsp;
+                <button  id="b4"><a href="#"> edit</a></button>
+            </div>
+          </div>
+          <?php } ?>
+        </div>
+
+      </div> 
+      <?php require_once('../includes/footer.php');?>
+      <!-- End software products Section -->
+
+
+  <!-- detailboot JS Files -->
+  <script src="aboutbootstrap/aos/aos.js"></script>
+  <script src="aboutbootstrap/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="aboutbootstrap/glightbox/js/glightbox.min.js"></script>
+  <script src="aboutbootstrap/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="aboutbootstrap/php-email-form/validate.js"></script>
+  <script src="aboutbootstrap/swiper/swiper-bundle.min.js"></script>
+  <script src="aboutbootstrap/waypoints/noframework.waypoints.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="js/main.js"></script>
+</body>
+</html>
